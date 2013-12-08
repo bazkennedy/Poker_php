@@ -2,16 +2,22 @@
 <body>
 <?php
  
+ //defining the size of the deck
 $deckSize = 52;
  
+ //populating the deck with 52 numbers(cards)
 $cards = array();
 for ($i=0; $i < $deckSize; $i++){
     $cards[$i]=$i;
   }
  
+ 
+ //creating the suits, values and hand arrays
 $suits = array();
 $values = array();
 $hand = array();
+
+/* ---- Generating Hand -------*/
 $uniqueNumbersRequired = 5;
 $aRandomNumber;
 $index = 0;
@@ -31,7 +37,7 @@ $duplicateIndex;
         $index++;
     }
  
-
+/* ---- Sorting the Hand -------*/
 $swapped = true;
 $tmp = 0;
     while($swapped){
@@ -49,6 +55,8 @@ $tmp = 0;
             }
 			
  
+ 
+ /* ---- Detirmining suits and values -------*/
 for($n=0; $n < 5;$n++)
 {    
 if($hand[$n] < 13)  
@@ -67,7 +75,11 @@ if($hand[$n] < 13)
     }
  
 $values[$n] = $hand[$n]%13;
+ }
  
+ /* ---- Output Hand -------*/
+ for($n=0; $n < 5;$n++)
+{    
 switch ($values[$n])  
       {
         case 0:  echo "Two of ";   break;
